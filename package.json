@@ -1,0 +1,14 @@
+{
+  "name": "chronicle",
+  "version": "0.0.1",
+  "description": "Archives",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "author": "chriskilinc",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
