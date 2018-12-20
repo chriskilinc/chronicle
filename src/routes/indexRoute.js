@@ -5,5 +5,4 @@ router.get("/", (req, res) => {
   res.send(JSON.stringify("/api"));
 });
 
-
 module.exports = router;
