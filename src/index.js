@@ -1,6 +1,7 @@
 const port = process.env.PORT || 3001; //  Configures the application PORT to either the current enviorments port OR if enviorment port is not set, port '3000'
 const express = require('express');
 const app = express();
+var bodyParser = require('body-parser');
 
 const indexRoute = require('./routes/indexRoute');
 const apiRoute = require('./routes/apiRoute');
@@ -14,6 +15,9 @@ app.use(function(req, res, next) {
   );
   next();
 });
+
+app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 //  Index Route
 app.use('/', indexRoute);

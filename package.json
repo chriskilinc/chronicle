@@ -13,6 +13,8 @@
     "nodemon": "^1.18.9"
   },
   "dependencies": {
-    "express": "^4.16.4"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "ramda": "^0.26.1"
   }
 }
