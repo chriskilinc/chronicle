@@ -17,7 +17,9 @@ router.post("/", (req, res) => {
   } else {
     //  Save to Database
     let log = req.body;
-    log.systemTime = new Date(Date.now())
+    log.meta = {
+      created: new Date(Date.now()),
+    }
 
     state.push(log);
 

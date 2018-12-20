@@ -1,17 +1,16 @@
 {
-	"systemInfo":
-	{
-		"host":"Host",
-		"source":"Source",
-		"sourceType":"foo-api"
-		
-	},
-	"severity":"INFO",
-	"details":{
-		"payload":[{
-			"foo":"bar"
-		}],
-		"message":"Message"
-	}
-	
+  "systemInfo": {
+    "host": "Host",
+    "source": "Source",
+    "sourceType": "foo-api"
+  },
+  "severity": "INFO",
+  "details": {
+    "payload": [
+      {
+        "foo": "bar"
+      }
+    ],
+    "message": "Message"
+  }
 }
