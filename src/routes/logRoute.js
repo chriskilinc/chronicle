@@ -1,19 +1,31 @@
 const router = require('express').Router();
-const R = require('ramda');
+const R = require('Ramda');
+
+let state = [];
 
 router.get('/', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify('/api/log'));
+  res.send(JSON.stringify(state));
 });
 
 router.post('/', (req, res) => {
+  console.log('POST api/log');
   res.setHeader('Content-Type', 'application/json');
-  console.log(req.body);
-  if (R.isEmpty(req.body)) {
-    res.status(400).send(JSON.stringify({ error: '400 BAD REQUEST' }));
-  }
 
-  res.send(JSON.stringify(req.body));
+  if (R.isEmpty(req.body)) {
+    res.status(400).send(JSON.stringify({ error: 'Bad Request (400)' }));
+  } else {
+    //  Save to Database
+    let log = req.body;
+    log.meta = {
+      created: new Date(Date.now())
+    };
+
+    state.push(log);
+
+    //  Debugging
+    res.send(JSON.stringify(req.body));
+  }
 });
 
 module.exports = router;
