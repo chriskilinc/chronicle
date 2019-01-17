@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const R = require('Ramda');
+const pjson = require('../../package');
 
 let state = [];
 
@@ -9,7 +10,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log('POST api/log');
+  const dateFull = new Date(Date.now());
+  console.log(`POST api/log : ${dateFull.toISOString()}`);
   res.setHeader('Content-Type', 'application/json');
 
   if (R.isEmpty(req.body)) {
@@ -18,13 +20,14 @@ router.post('/', (req, res) => {
     //  Save to Database
     let log = req.body;
     log.meta = {
-      created: new Date(Date.now())
+      created: dateFull,
+      logger: `${pjson.name} v${pjson.version}`
     };
 
     state.push(log);
 
     //  Debugging
-    res.send(JSON.stringify(req.body));
+    res.send(JSON.stringify(log));
   }
 });
 

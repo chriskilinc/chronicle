@@ -1,4 +1,5 @@
-{
+[{"Example":"1"},
+  {
   "systemInfo": {
     "host": "Host",
     "source": "Source",
@@ -13,4 +14,19 @@
     ],
     "message": "Message"
   }
-}
+},
+{"Example":"2"},
+{
+	"logTime": "1/1/2019-00:00:00",
+	"system": {
+		"host": "horoku.com",
+		"source": "get/timetable",
+		"sourceInfo": "momentum-api"
+	},
+	"severity": "info",
+	"details": {
+		"payload": {
+			"foo": "bar"	
+		}
+	}
+}]
