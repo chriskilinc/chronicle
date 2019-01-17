@@ -15,7 +15,28 @@ router.post('/', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
 
   if (R.isEmpty(req.body)) {
-    res.status(400).send(JSON.stringify({ error: 'Bad Request (400)' }));
+    res.status(400).send(
+      JSON.stringify({
+        error: 'Bad Request (400)',
+        information: {
+          text: 'Example on how a log looks like',
+          example: {
+            logTime: '2019-01-17T20:45:44.652Z',
+            system: {
+              host: 'example.com',
+              source: 'get/foo',
+              sourceInfo: 'foo-api'
+            },
+            severity: 'info',
+            details: {
+              payload: {
+                foo: 'bar'
+              }
+            }
+          }
+        }
+      })
+    );
   } else {
     //  Save to Database
     let log = req.body;
