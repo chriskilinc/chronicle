@@ -16,6 +16,14 @@ isValidCredentials = req => {
   }
 };
 
+uuidv4 = () => {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = (Math.random() * 16) | 0,
+      v = c == 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+};
+
 router.get('/', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(state));
@@ -58,6 +66,7 @@ router.post('/', (req, res) => {
   } else {
     //  Create Meta Data
     let log = req.body;
+    log.id = uuidv4();
     log.meta = {
       created: dateFull,
       logger: `${pjson.name} v${pjson.version}`
