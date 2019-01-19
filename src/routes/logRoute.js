@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const R = require('Ramda');
+const R = require('ramda');
 const pjson = require('../../package');
 const APIKEY = process.env.APIKEY || '00000000';
 
