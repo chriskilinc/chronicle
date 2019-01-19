@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const R = require('Ramda');
 const pjson = require('../../package');
+const APIKEY = process.env.APIKEY;
 
 let state = [];
 
