@@ -22,15 +22,13 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  if (!this.isValidCredentials()) {
+  if (!isValidCredentials(req)) {
     res.status(500).send('Could not validate apikey on body');
   }
 
   const dateFull = new Date(Date.now());
   console.log(`INITIAL | POST api/log : ${dateFull.toISOString()}`);
   res.setHeader('Content-Type', 'application/json');
-
-  this.validateCredentials(req, res);
 
   if (R.isEmpty(req.body)) {
     console.log(`FAILED | POST api/log : ${dateFull.toISOString()}`);
@@ -71,7 +69,7 @@ router.post('/', (req, res) => {
       state.push(log);
     } else {
       //  Save to Database
-      delete req.body.apikey;
+      delete log.apikey;
     }
 
     console.log(`SUCCESS | POST api/log : ${dateFull.toISOString()}`);
